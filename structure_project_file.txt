@@ -1,0 +1,7 @@
+flask_quote_app/
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── hosts               ← inventory Ansible
+├── deploy_flask.yaml   ← playbook Ansible
+└── Jenkinsfile         ← pipeline Jenkins

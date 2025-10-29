@@ -1,0 +1,28 @@
+---
+- name: Déployer Flask Quote API
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Copier l'application
+      copy:
+        src: /home/dieumercibena/jenkins_demo
+        dest: /home/ec2-user/
+        mode: '0755'
+
+    - name: Construire l'image Docker
+      community.docker.docker_image:
+        source: build
+        build:
+          path: /home/ec2-user/jenkins_demo
+        name: flask_quote_app
+        tag: latest
+
+    - name: Lancer le conteneur
+      community.docker.docker_container:
+        name: flask_quote_container
+        image: flask_quote_app:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "5000:5000"
+
