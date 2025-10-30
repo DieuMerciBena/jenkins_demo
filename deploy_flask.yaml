@@ -5,7 +5,8 @@
   tasks:
     - name: Copier l'application
       copy:
-        src: /home/dieumercibena/jenkins_demo
+        src: /var/lib/jenkins/workspace/demo-flask-ansible
+
         dest: /home/ec2-user/
         mode: '0755'
 
@@ -13,7 +14,7 @@
       community.docker.docker_image:
         source: build
         build:
-          path: /home/ec2-user/jenkins_demo
+          path: /home/ec2-user/demo-flask-ansible
         name: flask_quote_app
         tag: latest
 
