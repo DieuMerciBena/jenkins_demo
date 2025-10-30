@@ -7,7 +7,7 @@
       copy:
         src: /var/lib/jenkins/workspace/demo-flask-ansible
 
-        dest: /home/ec2-user/
+        dest: /home/ec2-user
         mode: '0755'
 
     - name: Construire l'image Docker
